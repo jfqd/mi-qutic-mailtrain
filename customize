@@ -20,7 +20,7 @@ passwd -d node
 echo "* Setup mailtrain"
 git clone git://github.com/Mailtrain-org/mailtrain.git
 cd mailtrain
-npm install --production
+# npm install --production
 cp config/default.toml config/production.toml
 
 # Clean up
