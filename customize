@@ -1,0 +1,33 @@
+#!/usr/bin/bash
+
+PATH=/opt/local/gnu/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/usr/sbin
+
+# Exit if any command fails
+set -o errexit
+
+MUNIN_PLUGINS="
+"
+
+echo "* Activate munin plugins"
+/opt/qutic/bin/munin-node-plugins ${MUNIN_PLUGINS}
+
+echo "* Setup node home"
+groupadd -g 1100 node
+useradd -m -s /usr/bin/bash -d /home/node -u 1100 -g node node
+passwd -N node
+passwd -d node
+
+echo "* Setup mailtrain"
+git clone git://github.com/Mailtrain-org/mailtrain.git
+cd mailtrain
+npm install --production
+cp config/default.toml config/production.toml
+
+# Clean up
+echo "* Cleaning up."
+#pkgin -y remove gmake
+#pkgin -y remove gcc49
+rm /root/customize
+
+# Prepare image for provisioning
+sm-prepare-image -y

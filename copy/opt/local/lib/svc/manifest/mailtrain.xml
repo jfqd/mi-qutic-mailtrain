@@ -1,0 +1,37 @@
+<?xml version='1.0'?>
+<!DOCTYPE service_bundle SYSTEM '/usr/share/lib/xml/dtd/service_bundle.dtd.1'>
+<service_bundle type='manifest' name='mailtrain'>
+  <service name='application/mailtrain' type='service' version='1'>
+    <create_default_instance enabled='false'/>
+    <single_instance/>
+    
+    <dependency name='network' grouping='require_all' restart_on='error' type='service'>
+      <service_fmri value='svc:/milestone/network:default'/>
+    </dependency>
+    <dependency name='filesystem' grouping='require_all' restart_on='error' type='service'>
+      <service_fmri value='svc:/system/filesystem/local'/>
+    </dependency>
+    
+    <method_context working_directory="/home/node/mailtrain">
+      <method_credential user="node" group="node" supp_groups=":default" privileges="basic,net_privaddr"/>
+    </method_context>
+    
+    <exec_method name='start' type='method' exec='NODE_ENV=production npm start' timeout_seconds='60'>
+      <method_context>
+        <method_credential user='node' group='node' />
+      </method_context>
+    </exec_method>
+    
+    <exec_method name='stop' type='method' exec=':kill' timeout_seconds='60' />
+    
+		<property_group name="application" type="application">
+		</property_group>
+    
+    <stability value='Evolving'/>
+    <template>
+      <common_name>
+        <loctext xml:lang='C'>mailtrain</loctext>
+      </common_name>
+    </template>
+  </service>
+</service_bundle>
