@@ -24,10 +24,10 @@ title="mailtrain"
 # Enabled HTML editors
 editors=[
   ["summernote", "Summernote"],
-  ["grapejs", "GrapeJS"],
   ["mosaico", "Mosaico"],
   ["codeeditor", "Code Editor"]
 ]
+# ["grapejs", "GrapeJS"],
 
 # Default language to use
 language="de_DE"
