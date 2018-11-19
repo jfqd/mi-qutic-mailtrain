@@ -1,0 +1,65 @@
+.navbar-nav li:nth-child(6),
+.navbar-nav li:nth-child(7),
+.jumbotron,
+.footer {
+  display: none;
+}
+
+.navbar-default {
+  background-color: #525c66;
+  border-color: #525c66;
+}
+
+.navbar-default .navbar-nav>.active>a, 
+.navbar-default .navbar-nav>.active>a:hover, 
+.navbar-default .navbar-nav>.active>a:focus {
+  color: #333333;
+  background-color: #fff;
+}
+
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a:focus {
+  background-color: #292e33;
+}
+
+.btn-primary {
+  border-color: #525c66;
+  background-color: #525c66;
+}
+
+.btn-primary:hover {
+  background-color: #292e33;
+}
+
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:hover,
+.navbar-default .navbar-nav>.open>a:focus {
+  background-color: #525c66;
+  border-color: #525c66;
+}
+
+.dropdown-menu>li>a:hover,
+.dropdown-menu>li>a:focus {
+  background-color: #525c66;
+}
+
+#mt-navbar {
+  background-color: #525c66;
+}
+
+.btn-primary:active:hover,
+.btn-primary.active:hover,
+.open>.dropdown-toggle.btn-primary:hover,
+.btn-primary:active:focus,
+.btn-primary.active:focus,
+.open>.dropdown-toggle.btn-primary:focus,
+.btn-primary:active.focus,
+.btn-primary.active.focus,
+.open>.dropdown-toggle.btn-primary.focus {
+  background-color: #525c66;
+  border-color: #525c66;
+}
+
+.glyphicon {
+  padding-right: 4px;
+}

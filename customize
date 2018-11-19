@@ -17,16 +17,31 @@ useradd -m -s /usr/bin/bash -d /home/node -u 1100 -g node node
 passwd -N node
 passwd -d node
 
+echo "* Enable redis"
+svcadm enable redis
+
 echo "* Setup mailtrain"
+cd /home/node/
 git clone git://github.com/Mailtrain-org/mailtrain.git
 cd mailtrain
-# npm install --production
-cp config/default.toml config/production.toml
+npm install --production || true
+# add gdrp complience
+gsed -i \
+  "s|@import url(\"https://fonts.googleapis.com/css?family=Ubuntu:400,700\");|@font-face {font-family: 'Ubuntu';font-style: normal;font-weight: 400;src: url('https://qutic.com/fonts/ubuntu/400/ubuntu.eot'); src: local('Ubuntu Regular'), local('Ubuntu-Regular'),url('https://qutic.com/fonts/ubuntu/400/ubuntu.eot?#iefix') format('embedded-opentype'),url('https://qutic.com/fonts/ubuntu/400/ubuntu.woff2') format('woff2'),url('https://qutic.com/fonts/ubuntu/400/ubuntu.woff') format('woff'),url('https://qutic.com/fonts/ubuntu/400/ubuntu.ttf') format('truetype'), url('https://qutic.com/fonts/ubuntu/400/ubuntu.svg#Ubuntu') format('svg');} @font-face {font-family: 'Ubuntu';font-style: normal;font-weight: 700;src: url('https://qutic.com/fonts/ubuntu/700/ubuntu.eot'); src: local('Ubuntu Bold'), local('Ubuntu-Bold'),url('https://qutic.com/fonts/ubuntu/700/ubuntu.eot?#iefix') format('embedded-opentype'),url('https://qutic.com/fonts/ubuntu/700/ubuntu.woff2') format('woff2'),url('https://qutic.com/fonts/ubuntu/700/ubuntu.woff') format('woff'),url('https://qutic.com/fonts/ubuntu/700/ubuntu.ttf') format('truetype'),url('https://qutic.com/fonts/ubuntu/700/ubuntu.svg#Ubuntu') format('svg');}|" \
+  /home/node/mailtrain/public/bootstrap/themes/united.min.css
+# fix this and that
+mv /opt/qutic/var/tmp/production.toml config/production.toml
+mv /opt/qutic/var/tmp/qutic.css /home/node/mailtrain/public/custom/qutic.css
+mkdir -p /var/log/mailtrain
+chown node:node /var/log/mailtrain
+chown -R node:node /home/node/mailtrain/
+svccfg import /opt/local/lib/svc/manifest/mailtrain.xml
 
 # Clean up
 echo "* Cleaning up."
-#pkgin -y remove gmake
-#pkgin -y remove gcc49
+rm -rf /opt/qutic/var/tmp
+pkgin -y remove gmake
+pkgin -y remove gcc7
 rm /root/customize
 
 # Prepare image for provisioning
