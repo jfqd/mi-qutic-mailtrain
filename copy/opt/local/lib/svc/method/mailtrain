@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+
+/opt/local/bin/npm start >> /var/log/mailtrain/mailtrain.log 2>&1 &
+
+exit 0
