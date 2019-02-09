@@ -38,6 +38,15 @@
   border-color: #525c66;
 }
 
+.navbar-default .navbar-toggle {
+  border-color: #292e33;
+}
+
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: #292e33;
+}
+
 .dropdown-menu>li>a:hover,
 .dropdown-menu>li>a:focus {
   background-color: #525c66;
@@ -45,6 +54,11 @@
 
 #mt-navbar {
   background-color: #525c66;
+}
+
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+  border-color: white;
 }
 
 .btn-primary:active:hover,
