@@ -24,8 +24,9 @@ echo "* Setup mailtrain"
 cd /home/node/
 git clone git://github.com/Mailtrain-org/mailtrain.git
 cd mailtrain
+npm install ajv@^5.0.0  || true
 npm install --production || true
-# add gdrp complience
+# make it gdrp complience
 gsed -i \
   "s|@import url(\"https://fonts.googleapis.com/css?family=Ubuntu:400,700\");|@font-face {font-family: 'Ubuntu';font-style: normal;font-weight: 400;src: url('https://qutic.com/fonts/ubuntu/400/ubuntu.eot'); src: local('Ubuntu Regular'), local('Ubuntu-Regular'),url('https://qutic.com/fonts/ubuntu/400/ubuntu.eot?#iefix') format('embedded-opentype'),url('https://qutic.com/fonts/ubuntu/400/ubuntu.woff2') format('woff2'),url('https://qutic.com/fonts/ubuntu/400/ubuntu.woff') format('woff'),url('https://qutic.com/fonts/ubuntu/400/ubuntu.ttf') format('truetype'), url('https://qutic.com/fonts/ubuntu/400/ubuntu.svg#Ubuntu') format('svg');} @font-face {font-family: 'Ubuntu';font-style: normal;font-weight: 700;src: url('https://qutic.com/fonts/ubuntu/700/ubuntu.eot'); src: local('Ubuntu Bold'), local('Ubuntu-Bold'),url('https://qutic.com/fonts/ubuntu/700/ubuntu.eot?#iefix') format('embedded-opentype'),url('https://qutic.com/fonts/ubuntu/700/ubuntu.woff2') format('woff2'),url('https://qutic.com/fonts/ubuntu/700/ubuntu.woff') format('woff'),url('https://qutic.com/fonts/ubuntu/700/ubuntu.ttf') format('truetype'),url('https://qutic.com/fonts/ubuntu/700/ubuntu.svg#Ubuntu') format('svg');}|" \
   /home/node/mailtrain/public/bootstrap/themes/united.min.css
@@ -34,7 +35,8 @@ gsed -i \
   /home/node/mailtrain/node_modules/premailer-api/premailer.js
 # fix this and that
 mv /opt/qutic/var/tmp/production.toml config/production.toml
-mv /opt/qutic/var/tmp/qutic.css /home/node/mailtrain/public/custom/qutic.css
+mkdir -p public/custom
+mv /opt/qutic/var/tmp/qutic.css public/custom/qutic.css
 mkdir -p /var/log/mailtrain
 chown node:node /var/log/mailtrain
 chown -R node:node /home/node/mailtrain/
