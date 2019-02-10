@@ -5,3 +5,4 @@ gcc7
 gmake
 ImageMagick
 redis
+spiped

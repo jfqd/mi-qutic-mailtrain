@@ -20,6 +20,14 @@ passwd -d node
 echo "* Enable redis"
 svcadm enable redis
 
+echo "* setup spiped"
+groupadd -g 120 spiped
+useradd -m -s /usr/bin/false -d /nonexistent -u 120 -g spiped spiped
+dd if=/dev/urandom bs=32 count=1 2>/dev/null | shasum -a 512 | awk '{print $1}' | tr -d '\n' > /etc/ssh/spiped.key
+chmod 0640 /etc/ssh/spiped.key
+chown root:spiped /etc/ssh/spiped.key
+svccfg delete svc:/pkgsrc/spiped:default
+
 echo "* Setup mailtrain"
 cd /home/node/
 git clone git://github.com/Mailtrain-org/mailtrain.git
