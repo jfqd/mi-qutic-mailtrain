@@ -4,3 +4,4 @@ git-base
 gcc7
 gmake
 ImageMagick
+redis
