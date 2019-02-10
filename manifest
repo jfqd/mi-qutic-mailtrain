@@ -1,7 +1,7 @@
 name="qutic-mailtrain"
 organization="qutic development"
 brand="mailtrain Instance"
-version="18.3.0"
+version="18.3.1"
 description="qutic mailtrain image"
 homepage="https://github.com/jfqd/mi-qutic-mailtrain"
 users="root admin node"

@@ -1,5 +1,10 @@
 # Changelog
 
+## 18.3.1
+
+* do not use premailer from dialect.ca
+* remove GrapeJS cause of gdpr issues with google fonts
+
 ## 18.3.0
 
 * First release

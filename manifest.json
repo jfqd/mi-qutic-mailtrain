@@ -1,6 +1,6 @@
 {
   "name":         "qutic-mailtrain",
-  "version":      "18.3.0",
+  "version":      "18.3.1",
   "description":  "qutic mailtrain image",
   "organization": "qutic development",
   "brand":        "mailtrain Instance",
