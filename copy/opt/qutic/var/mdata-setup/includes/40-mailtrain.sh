@@ -13,4 +13,6 @@ if mdata-get mailtrain_mysqldbname 1>/dev/null 2>&1; then
   sed -i "s/database=\"mailtrain-db\"/database=\"${MYSQDB}\"/" /home/node/mailtrain/config/production.toml
 fi
 
-# svcadm enable svc:/application/mailtrain:default
+SESSION_SECRET=`dd if=/dev/urandom bs=32 count=1 2>/dev/null | shasum -a 512 | awk '{print $1}' | tr -d '\n'`
+sed -i "s/secret=\"a cat\"/secret=\"${SESSION_SECRET}\"/" /home/node/mailtrain/config/production.toml
+svcadm enable svc:/application/mailtrain:default
