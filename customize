@@ -33,6 +33,7 @@ cd /home/node/
 git clone git://github.com/Mailtrain-org/mailtrain.git
 cd mailtrain
 npm install ajv@^5.0.0  || true
+npm install nodemailer-openpgp  || true
 npm install --production || true
 # make it gdrp complience
 gsed -i \
