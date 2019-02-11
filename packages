@@ -6,3 +6,4 @@ gmake
 ImageMagick
 redis
 spiped
+nginx

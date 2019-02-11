@@ -12,5 +12,6 @@ fi
 if mdata-get spiped_percona_host 1>/dev/null 2>&1; then
   SPIPED_PERCONA_HOST=`mdata-get spiped_percona_host`
   sed -i "s/-t 127.0.0.1:23306/-t $SPIPED_PERCONA_HOST:23306/g" /opt/local/lib/svc/manifest/spiped-percona.xml
+  # import will start service!
   svccfg import /opt/local/lib/svc/manifest/spiped-percona.xml
 fi
