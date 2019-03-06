@@ -42,6 +42,9 @@ gsed -i \
 gsed -i \
   "s|http://premailer.dialect.ca/api/0.1/documents|https://premailer.qutic.com/api/0.1/documents|" \
   /home/node/mailtrain/node_modules/premailer-api/premailer.js
+gsed -i \
+  "s|<mj-font name="Lato" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic" />||" \
+  /home/node/mailtrain/views/subscription/layout.mjml.hbs
 # fix this and that
 mv /opt/qutic/var/tmp/production.toml config/production.toml
 mkdir -p public/custom
