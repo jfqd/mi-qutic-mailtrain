@@ -1,5 +1,10 @@
 # Changelog
 
+## 18.3.2
+
+* include nginx and spiped
+* make number of sending-processes an option
+
 ## 18.3.1
 
 * do not use premailer from dialect.ca
