@@ -2,6 +2,8 @@
 
 PATH=/opt/local/gnu/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/usr/sbin
 
+MAILTRAIN_VERSION=1.24.1
+
 # Exit if any command fails
 set -o errexit
 
@@ -30,13 +32,16 @@ svccfg delete svc:/pkgsrc/spiped:default
 
 echo "* Setup mailtrain"
 cd /home/node/
-git clone git://github.com/Mailtrain-org/mailtrain.git
+# git clone git://github.com/Mailtrain-org/mailtrain.git
+curl -s -LO "https://github.com/Mailtrain-org/mailtrain/archive/v${MAILTRAIN_VERSION}.tar.gz"
+tar xf "v${MAILTRAIN_VERSION}.tar.gz"
+ln -nfs "mailtrain-${MAILTRAIN_VERSION}" mailtrain
 cd mailtrain
 npm install ajv@^5.0.0  || true
 npm install nodemailer-openpgp  || true
 npm install --production || true
-# make it gdrp complience
 
+# make it gdrp complience
 if [[ -f /home/node/mailtrain/public/bootstrap/themes/united.min.css ]]; then
   gsed -i \
     "s|@import url(\"https://fonts.googleapis.com/css?family=Ubuntu:400,700\");|@font-face {font-family: 'Ubuntu';font-style: normal;font-weight: 400;src: url('https://qutic.com/fonts/ubuntu/400/ubuntu.eot'); src: local('Ubuntu Regular'), local('Ubuntu-Regular'),url('https://qutic.com/fonts/ubuntu/400/ubuntu.eot?#iefix') format('embedded-opentype'),url('https://qutic.com/fonts/ubuntu/400/ubuntu.woff2') format('woff2'),url('https://qutic.com/fonts/ubuntu/400/ubuntu.woff') format('woff'),url('https://qutic.com/fonts/ubuntu/400/ubuntu.ttf') format('truetype'), url('https://qutic.com/fonts/ubuntu/400/ubuntu.svg#Ubuntu') format('svg');} @font-face {font-family: 'Ubuntu';font-style: normal;font-weight: 700;src: url('https://qutic.com/fonts/ubuntu/700/ubuntu.eot'); src: local('Ubuntu Bold'), local('Ubuntu-Bold'),url('https://qutic.com/fonts/ubuntu/700/ubuntu.eot?#iefix') format('embedded-opentype'),url('https://qutic.com/fonts/ubuntu/700/ubuntu.woff2') format('woff2'),url('https://qutic.com/fonts/ubuntu/700/ubuntu.woff') format('woff'),url('https://qutic.com/fonts/ubuntu/700/ubuntu.ttf') format('truetype'),url('https://qutic.com/fonts/ubuntu/700/ubuntu.svg#Ubuntu') format('svg');}|" \
