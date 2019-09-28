@@ -45,7 +45,7 @@ gsed -i \
 gsed -i \
   "s|<mj-font name="Lato" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic" />||" \
   /home/node/mailtrain/views/subscription/layout.mjml.hbs
-sed -i \
+gsed -i \
   "s#https://fonts.googleapis.com/css?family=Lato:300,400,500,700#https://cdn.radiantmagic.com/fonts/lato/400/font.css#" \ 
   /home/node/mailtrain/node_modules/mjml-core/lib/configs/listFontsImports.js
 
