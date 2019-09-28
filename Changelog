@@ -1,5 +1,9 @@
 # Changelog
 
+## 20181018.0
+
+* switch to pkgsrc trunk
+
 ## 18.3.2
 
 * include nginx and spiped

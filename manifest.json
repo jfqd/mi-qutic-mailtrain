@@ -1,11 +1,11 @@
 {
   "name":         "qutic-mailtrain",
-  "version":      "18.3.3",
+  "version":      "201810183.0",
   "description":  "qutic mailtrain image",
   "organization": "qutic development",
   "brand":        "mailtrain Instance",
   "homepage":     "https://github.com/jfqd/mi-qutic-mailtrain",
-  "base":         "c277c7d4-dde8-11e8-8b40-534c36e692fc",
+  "base":         "15eddb38-d9ec-11e9-99c5-4ba3253bb0c7",
   "customer_metadata": {
     "admin_authorized_keys":           {"type": "text", "description": "SSH public authorized key(s) for the admin user"},
     "node_authorized_keys":            {"type": "text", "description": "SSH public authorized key(s) for the node user"},
