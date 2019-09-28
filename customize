@@ -34,7 +34,7 @@ echo "* Setup mailtrain"
 cd /home/node/
 # git clone git://github.com/Mailtrain-org/mailtrain.git
 curl -s -LO "https://github.com/Mailtrain-org/mailtrain/archive/v${MAILTRAIN_VERSION}.tar.gz"
-tar xf "v${MAILTRAIN_VERSION}.tar.gz"
+gtar xf "v${MAILTRAIN_VERSION}.tar.gz"
 ln -nfs "mailtrain-${MAILTRAIN_VERSION}" mailtrain
 cd mailtrain
 npm install ajv@^5.0.0  || true
