@@ -1,5 +1,9 @@
 # Changelog
 
+## 20181018.1
+
+* use latest mailtrain 1 version
+
 ## 20181018.0
 
 * switch to pkgsrc trunk
