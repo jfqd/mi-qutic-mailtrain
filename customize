@@ -7,14 +7,6 @@ MAILTRAIN_VERSION=1.24.2
 # Exit if any command fails
 set -o errexit
 
-MUNIN_PLUGINS="
-  nginx_request
-  nginx_status
-"
-
-echo "* Activate munin plugins"
-/opt/qutic/bin/munin-node-plugins ${MUNIN_PLUGINS}
-
 echo "* Setup node home"
 groupadd -g 1100 node
 useradd -m -s /usr/bin/bash -d /home/node -u 1100 -g node node
