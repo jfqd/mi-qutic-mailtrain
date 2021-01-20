@@ -1,5 +1,12 @@
 # Changelog
 
+## 20191127.1
+
+* fix archive naming
+* fix mysql host exchange
+* get redis going
+* add mysql-client for connection testing
+
 ## 20191127.0
 
 * update node to 10.23.0
