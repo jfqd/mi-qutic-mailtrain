@@ -87,7 +87,7 @@ postsize="2MB"
 tmpdir="/var/tmp"
 
 [mysql]
-host="127.0.0.1"
+host="localhost"
 user="mailtrain-user"
 password="mailtrain-pwd"
 database="mailtrain-db"
