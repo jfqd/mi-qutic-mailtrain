@@ -14,6 +14,7 @@ passwd -N node
 passwd -d node
 
 echo "* Enable redis"
+chown redis /opt/local/etc/redis.conf
 svcadm enable redis
 
 echo "* setup spiped"
@@ -59,7 +60,7 @@ if [[ -f /home/node/mailtrain/node_modules/mjml-core/lib/configs/listFontsImport
 fi
 
 # fix this and that
-mv /opt/qutic/var/tmp/production.toml config/production.toml
+mv /opt/qutic/var/tmp/production.toml /home/node/mailtrain/config/production.toml
 mkdir -p public/custom
 mv /opt/qutic/var/tmp/qutic.css public/custom/qutic.css
 mkdir -p /var/log/mailtrain
