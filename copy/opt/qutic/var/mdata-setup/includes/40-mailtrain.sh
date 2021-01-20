@@ -1,6 +1,6 @@
 if mdata-get mailtrain_mysqlhost 1>/dev/null 2>&1; then
   MYSQLHOST=`mdata-get mailtrain_mysqlhost`
-  sed -i "s/host=\"127.0.0.1\"/host=\"${MYSQLHOST}\"/" /home/node/mailtrain/config/production.toml
+  sed -i "s/host=\"localhost\"/host=\"${MYSQLHOST}\"/" /home/node/mailtrain/config/production.toml
 fi
 
 if mdata-get mailtrain_mysqluser 1>/dev/null 2>&1; then
@@ -26,6 +26,3 @@ fi
 SESSION_SECRET=`dd if=/dev/urandom bs=32 count=1 2>/dev/null | shasum -a 512 | awk '{print $1}' | tr -d '\n'`
 sed -i "s/secret=\"a cat\"/secret=\"${SESSION_SECRET}\"/" /home/node/mailtrain/config/production.toml
 svcadm enable svc:/application/mailtrain:default
-
-
-host="localhost"
